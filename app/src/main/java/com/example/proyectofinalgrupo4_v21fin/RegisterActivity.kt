@@ -39,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
                         val uid = user?.uid
 
                         // Utilizamos el modelo para representar los datos del usuario
-                        val usuarioModel = UsuarioModel(celular = celular, clave = clave, correo = correo, nombre = nombreCompleto)
+                        val usuarioModel = UsuarioModel(celular = celular, clave = clave, correo = correo, nombre = nombreCompleto, tipo = "usuario")
 
                         // Agregamos el modelo a Firestore
                         collectionRef.document(uid ?: "").set(usuarioModel)

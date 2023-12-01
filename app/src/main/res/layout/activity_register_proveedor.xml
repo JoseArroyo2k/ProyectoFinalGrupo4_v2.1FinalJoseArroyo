@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- EditText para el nombre del proveedor -->
+    <EditText
+        android:id="@+id/txtNombreProveedor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:hint="Nombre del supermercado"
+        android:inputType="textPersonName" />
+
+    <!-- EditText para el RUC -->
+    <EditText
+        android:id="@+id/txtRUC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="RUC del supermercado"
+        android:inputType="text"
+        android:layout_below="@+id/txtNombreProveedor"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- EditText para la dirección -->
+    <EditText
+        android:id="@+id/txtDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dirección del supermercado"
+        android:inputType="text"
+        android:layout_below="@+id/txtRUC"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- EditText para la URL de la imagen -->
+    <EditText
+        android:id="@+id/txtUrlImagen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="URL de la imagen del supermercado"
+        android:inputType="text"
+        android:layout_below="@+id/txtDireccion"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- EditText para la contraseña -->
+    <EditText
+        android:id="@+id/txtClaveProveedor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:layout_below="@+id/txtUrlImagen"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- RadioButton para Supermercado -->
+    <RadioButton
+        android:id="@+id/radioSupermercado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supermercado"
+        android:layout_below="@id/txtClaveProveedor"
+        android:layout_marginTop="16dp"/>
+
+    <!-- RadioButton para Restaurante -->
+    <RadioButton
+        android:id="@+id/radioRestaurante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurante"
+        android:layout_below="@id/radioSupermercado"
+        android:layout_marginTop="8dp"/>
+
+    <!-- EditText para el correo electrónico -->
+    <EditText
+        android:id="@+id/txtCorreoProveedor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/radioRestaurante"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Botón de registro -->
+    <Button
+        android:id="@+id/btnRegistroProveedor2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCorreoProveedor"
+        android:layout_marginTop="24dp"
+        android:text="Registrar" />
+
+</RelativeLayout>

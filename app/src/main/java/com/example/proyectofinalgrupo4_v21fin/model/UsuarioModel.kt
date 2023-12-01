@@ -5,5 +5,6 @@ data class UsuarioModel(
     val celular: String = "",
     val clave: String = "",
     val correo: String = "",
-    val nombre: String = ""
+    val nombre: String = "",
+    val tipo: String =""
 )
