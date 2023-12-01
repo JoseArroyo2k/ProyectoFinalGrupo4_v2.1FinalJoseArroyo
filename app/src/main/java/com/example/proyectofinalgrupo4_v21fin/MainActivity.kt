@@ -40,23 +40,40 @@ class MainActivity : AppCompatActivity() {
                         if (currentUser != null) {
                             val uid = currentUser.uid
 
-                            db.collection("Supermercados").document(uid)
+                            db.collection("Usuarios").document(uid)
                                 .get()
                                 .addOnSuccessListener { document ->
                                     if (document != null && document.exists()) {
                                         val tipo = document.getString("tipo")
                                         if (tipo != null && tipo == "proveedor") {
                                             startActivity(Intent(this, NavigationProveedoresActivity::class.java))
+                                            finish()
                                         } else {
                                             startActivity(Intent(this, NavigationActivity::class.java))
+                                            finish()
                                         }
-                                        finish()
                                     } else {
-                                        Snackbar.make(
-                                            findViewById(android.R.id.content),
-                                            "Error al obtener información del usuario",
-                                            Snackbar.LENGTH_LONG
-                                        ).show()
+                                        db.collection("Supermercados").document(uid)
+                                            .get()
+                                            .addOnSuccessListener { providerDoc ->
+                                                if (providerDoc != null && providerDoc.exists()) {
+                                                    startActivity(Intent(this, NavigationProveedoresActivity::class.java))
+                                                    finish()
+                                                } else {
+                                                    Snackbar.make(
+                                                        findViewById(android.R.id.content),
+                                                        "Error al obtener información del usuario",
+                                                        Snackbar.LENGTH_LONG
+                                                    ).show()
+                                                }
+                                            }
+                                            .addOnFailureListener { exception ->
+                                                Snackbar.make(
+                                                    findViewById(android.R.id.content),
+                                                    "Error al obtener información del usuario: ${exception.message}",
+                                                    Snackbar.LENGTH_LONG
+                                                ).show()
+                                            }
                                     }
                                 }
                                 .addOnFailureListener { exception ->
