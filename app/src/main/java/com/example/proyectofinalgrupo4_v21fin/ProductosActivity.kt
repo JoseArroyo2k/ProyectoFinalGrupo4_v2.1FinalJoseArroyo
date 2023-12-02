@@ -1,6 +1,8 @@
 package com.example.proyectofinalgrupo4_v21fin
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -51,8 +53,26 @@ class ProductosActivity : AppCompatActivity() {
                 // Manejo de errores al obtener los datos de Firestore
             }
 
+        listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            // Obtiene el producto seleccionado de la lista
+            val selectedProduct = productosList[position]
+
+            // Crea un Intent para iniciar DetalleProductoActivity
+            val intent = Intent(this, DetalleProductoActivity::class.java)
+
+            // Pasa los detalles del producto a través del Intent
+            intent.putExtra("productName", selectedProduct.nombre)
+            intent.putExtra("productDescription", selectedProduct.descripcion)
+            intent.putExtra("productPrice", selectedProduct.precio)
+
+            // Inicia la actividad DetalleProductoActivity
+            startActivity(intent)
+        }
+
         btnBackToStores.setOnClickListener {
             onBackPressed()
         }
+
+
     }
 }
