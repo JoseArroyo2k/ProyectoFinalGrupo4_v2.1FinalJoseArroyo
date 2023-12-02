@@ -83,4 +83,14 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/logofinal"
         android:alpha="0.7"/>
+
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="299dp"
+        android:layout_marginBottom="68dp"
+        android:text="LogOut" />
 </RelativeLayout>

@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.proyectofinalgrupo4_v21fin.model.UsuarioModel
 import android.widget.TextView
+import android.widget.Button
 
 class NavigationActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -22,6 +23,7 @@ class NavigationActivity : AppCompatActivity() {
         val ivRestaurantes: ImageView = findViewById(R.id.ivRestaurantes)
         val ivSupermercados: ImageView = findViewById(R.id.ivSupermercados)
         val tvUserName: TextView = findViewById(R.id.tvUserName)
+        val btnLogOut: Button = findViewById(R.id.btnLogOut)
 
         val currentUser: FirebaseUser? = auth.currentUser
 
@@ -53,6 +55,14 @@ class NavigationActivity : AppCompatActivity() {
         ivSupermercados.setOnClickListener {
             val intent = Intent(this, SupermercadoActivity::class.java)
             startActivity(intent)
+        }
+
+        btnLogOut.setOnClickListener {
+            auth.signOut()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
         }
     }
 }
