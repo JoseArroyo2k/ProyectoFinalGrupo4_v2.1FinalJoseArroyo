@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ProyectoFinalGrupo4_v21Fin"
         tools:targetApi="31">
         <activity
+            android:name=".GestionProductosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GestionPedidosActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductosGestionActivity"
             android:exported="false" />
         <activity
