@@ -25,15 +25,15 @@ class RestauranteActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        val restaurantesList = ArrayList<SupermercadosModel>() // Cambiamos el nombre para evitar duplicados
+        val restaurantesList = ArrayList<SupermercadosModel>()
 
         val restaurantesRef = db.collection("Supermercados")
-            .whereEqualTo("tipotienda", "Restaurante") // Cambiamos el valor a "Restaurante"
+            .whereEqualTo("tipotienda", "Restaurante")
 
         restaurantesRef.get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    val restaurante = document.toObject(SupermercadosModel::class.java) // Mantenemos el modelo
+                    val restaurante = document.toObject(SupermercadosModel::class.java)
                     restaurantesList.add(restaurante)
                 }
                 val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurantesList.map { it.nombre })
@@ -47,6 +47,15 @@ class RestauranteActivity : AppCompatActivity() {
             val intent = Intent(this, NavigationActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        // Agregar escucha de clics a la lista
+        listView.setOnItemClickListener { _, _, position, _ ->
+            val selectedStore = restaurantesList[position] // Obtenemos el restaurante seleccionado
+            val intent = Intent(this, ProductosActivity::class.java).apply {
+                putExtra("storeName", selectedStore.nombre) // Pasamos el nombre del restaurante a ProductosActivity
+            }
+            startActivity(intent) // Iniciamos ProductosActivity al hacer clic en un elemento
         }
     }
 }

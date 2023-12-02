@@ -48,5 +48,14 @@ class SupermercadoActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        // Agregar escucha de clics a la lista
+        listView.setOnItemClickListener { _, _, position, _ ->
+            val selectedStore = supermercadosList[position] // Obtenemos la tienda seleccionada
+            val intent = Intent(this, ProductosActivity::class.java).apply {
+                putExtra("storeName", selectedStore.nombre) // Pasamos el nombre de la tienda a ProductosActivity
+            }
+            startActivity(intent) // Iniciamos ProductosActivity al hacer clic en un elemento
+        }
     }
 }
